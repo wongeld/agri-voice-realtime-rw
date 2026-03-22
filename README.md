@@ -105,4 +105,4 @@ Optional text message for direct intent parsing:
 2. Open `http://localhost:8000`
 3. Click `Start Assistant` once to grant microphone access
 4. Speak naturally; when you pause, the UI auto-triggers a reply and then listens again automatically
-5. Or upload an audio file in the Upload Test card
+
