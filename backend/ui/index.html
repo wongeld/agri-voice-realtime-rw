@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agri Voice Live Console</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/ui/styles.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <main class="app">
+    <header class="hero">
+      <p class="eyebrow">Soil-Sense Voice</p>
+    </header>
+
+    <section class="panel controls">
+      <div class="row">
+        <button id="enableAutoBtn" class="btn primary">Start Assistant</button>
+      </div>
+      <p id="status" class="status">Status: tap Start Assistant once</p>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <h2>Live Turns</h2>
+        <div id="turns" class="turns"></div>
+      </article>
+    </section>
+  </main>
+
+  <script src="/ui/app.js"></script>
+</body>
+</html>
