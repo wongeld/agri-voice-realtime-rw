@@ -8,7 +8,7 @@ from app.schemas import IntentResult
 class IntentService:
     def __init__(self) -> None:
         self.intent_keywords = {
-            "soil_moisture": ["ubutaka", "moisture", "humidity y'ubutaka", "ubushuhe bw'ubutaka"],
+            "soil_moisture": ["", "moisture", "humidity y'ubutaka", "ubusubutakahuhe bw'ubutaka"],
             "soil_conductivity": ["conductivity", "ec", "ubuyobozi bw'amashanyarazi", "soil conductivity"],
             "water_level": ["amazi", "water", "tank", "water level"],
             "temperature": ["temperature", "ubushyuhe", "temp"],
