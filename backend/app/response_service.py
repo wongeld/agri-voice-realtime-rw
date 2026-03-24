@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+from app.agent_service import AgentService
 from app.schemas import IntentResult
 
 
 class ResponseService:
-    def __init__(self) -> None:
+    def __init__(self, agent_service: AgentService | None = None) -> None:
+        self.agent_service = agent_service
         self.intent_text = {
             "soil_moisture": "Nabonye ikibazo cy'ubushuhe bw'ubutaka.",
             "soil_conductivity": "Nabonye ikibazo cya soil conductivity.",
@@ -20,6 +22,11 @@ class ResponseService:
         }
 
     def build_text(self, result: IntentResult) -> str:
+        if self.agent_service is not None:
+            agent_answer = self.agent_service.answer(result)
+            if agent_answer:
+                return agent_answer
+
         chunks: list[str] = []
         for intent in result.intents:
             if intent in self.intent_text:

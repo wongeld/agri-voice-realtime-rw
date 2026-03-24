@@ -6,3 +6,6 @@ torch
 soundfile
 numpy
 python-multipart
+httpx
+langchain
+langchain-groq

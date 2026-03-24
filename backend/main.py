@@ -9,11 +9,13 @@ from fastapi import FastAPI, File, HTTPException, UploadFile, WebSocket, WebSock
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
+from app.agent_service import AgentService
 from app.asr_service import ASRService
 from app.intent_service import IntentService
 from app.pipeline import VoiceIntentPipeline
 from app.response_service import ResponseService
 from app.schemas import QueryResponse
+from app.sensor_readings_service import SensorReadingsService
 from app.session import RealtimeSession
 from app.tts_service import TTSService
 
@@ -30,7 +32,9 @@ app.mount("/ui", StaticFiles(directory=UI_DIR), name="ui")
 def startup() -> None:
     asr_service = ASRService(model_size="tiny", language="rw", vad_filter=False)
     intent_service = IntentService()
-    response_service = ResponseService()
+    readings_service = SensorReadingsService()
+    agent_service = AgentService(readings_service=readings_service)
+    response_service = ResponseService(agent_service=agent_service)
     tts_service = TTSService(model_name="facebook/mms-tts-kin", sample_rate=SAMPLE_RATE)
     app.state.pipeline = VoiceIntentPipeline(
         asr_service=asr_service,
